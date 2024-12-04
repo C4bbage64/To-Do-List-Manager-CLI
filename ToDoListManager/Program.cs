@@ -24,16 +24,26 @@ namespace ToDoListManager
                 switch (choice)
                 {
                     case "1": 
-                        AddTask(); 
+                        Console.Write("Enter Task description: ");
+                        string description = Console.ReadLine();
+                        taskManager.AddTask(description);
                         break;
                     case "2": 
-                        ViewTasks(); 
+                        TaskManager.ViewTasks(); 
                         break;
                     case "3": 
-                        MarkTaskAsCompleted(); 
+                        Console.Write("Enter task ID to mark as completed: ");
+                        if (int.TryParse(Console.ReadLine(), out int markId))
+                            taskManager.MarkTaskAsCompleted(markId);
+                        else
+                            Console.WriteLine("Invalid ID!");
                         break;
                     case "4": 
-                        DeleteTask(); 
+                        Console.Write("Enter task ID to delete: ");
+                        if (int.TryParse(Console.ReadLine(), out int deleteId))
+                            taskManager.DeleteTask(deleteId);
+                        else
+                            Console.WriteLine("Invalid ID!");
                         break;
                     case "5": 
                         return;
